@@ -1,29 +1,43 @@
 <!DOCTYPE html>
 <html>
+
+
   <head>
-    <title>Twittler Challenge</title>
+    <title>Twittler</title>
     <link rel="stylesheet" href="style.css" />
+  </head>
+
+
+  <body>
+
+    <header>
+
+      <section>
+        <nav class="nav" id="navbar">
+          <a href="#home">Home</a>
+          <a href="#feed">Feed</a>
+          <a href="#about">About</a>
+        </nav>
+      </section>
+
+      <section>
+        <h1 class="title" id="title">Twittler</h1>
+      </section>
+
+    </header> 
+       
+    <section class="tweets">
+
+    </section>
+
+      
+    
+    <!-- JavaScript Files -->
+    <script src="https://use.fontawesome.com/b3fac2f7d3.js"></script>
     <script src="jquery.js"></script>
     <script src="data_generator.js"></script>
-  </head>
-  <body>
-    <script>
-
-      $(document).ready(function(){
-        var $body = $('body');
-        $body.html('');
-
-        var index = streams.home.length - 1;
-        while(index >= 0){
-          var tweet = streams.home[index];
-          var $tweet = $('<div></div>');
-          $tweet.text('@' + tweet.user + ': ' + tweet.message);
-          $tweet.appendTo($body);
-          index -= 1;
-        }
-
-      });
-
-    </script>
+    <script src="application.js"></script> 
   </body>
+
+
 </html>
