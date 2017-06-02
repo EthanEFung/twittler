@@ -12,11 +12,13 @@
 
     <header>
       
-
       <nav class="nav" id="navbar">
-        <a href="#home">Home</a>
-        <a href="#feed">Feed</a>
-        <a href="#about">About</a>
+        <button><i class="home fa fa-home fa-2x"></i><a href="#home"></a></button>
+        <button><i class="moments fa fa-bolt fa-2x"></i><a href="#moments"></a></button>
+        <button><i class="notifications fa fa-bell-o fa-2x"></i><a href="#notifications"></a></button>
+        <button><i class="messages fa fa-envelope-o fa-2x"></i><a href="#messages"></a></button>
+
+        <button><i class="the-bird fa fa-twitter fa-2x"></i><a href="#the-bird"><!-- Twittle Icon --></a>
       </nav>
 
 
@@ -26,8 +28,23 @@
 
     </header> 
        
-    <section class="tweets">
+    <section class="twittler-feed">
+      <article class="twittle-box">
+      <!-- User Tweet Entry Box -->
+        <!-- Users Icon with a default if none is set -->
+        <i class="fa fa-user-circle" id="twittle-box-user-icon"></i>
+        <input type="text" placeholder="What's Happening?" id="twittle-box-input">
+        <button type="submit"><!--need a submit function-->Twittle</button>
+        <!-- A Default that says "What's Happening?"-->
+        <!-- When you click into the box, a button should pop up with a button underneath
+          that says "Twittle" -->
+      </article>
 
+
+      <!-- Tweets of people that follow -->
+      <article class="twittler-stream">
+
+      </article>
     </section>
 
       
