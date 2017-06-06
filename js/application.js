@@ -23,28 +23,27 @@ $(document).ready(function(){
     }
   }  
 
-  function addTweet(message) {
-    
-  }
 
   function createTweet() {
     let tweet = {}
-    tweet.created_at = new Date().getUTCDate();
+    tweet.created_at = new Date
     tweet.message = $('#twittle-box-input').val();
     tweet.user = "user";
     return tweet;
   }
   
-
+  function addTweet(message) {
+    let tweet = createTweet();
+    streams.users.user.push(tweet);
+    return tweet;
+  }
   //Users should be able to enter characters into a the user entry box, and upon clicking or pressing enter
   //should be able to display tweet as the first item on the stream.
     //this should append the tweet to their own stream
 
 
   $('#twittle-box-submit').on('click', function() {
-    let tweet = createTweet();
-    streams.users.user.push(tweet);
-    console.log(streams.users.user);
+    let tweet = addTweet();
     domReady(tweet).prependTo($twittlerStream);
     //select the text entered in the twittle-box-input
     //create a tweet with the users name, and time created
