@@ -1,3 +1,42 @@
   body {
 
   }
+
+  h1 {
+  	text-align:center;
+  }
+
+  input {
+  	padding: .60em;
+  	font-size: 14px;
+  }
+
+  .twittle-box{
+  	text-align:center;
+  }
+
+  .twittler-stream {
+    padding: 2em;
+  }
+
+  .tweet{
+  	padding-top: .25em;
+  }
+
+  #twittle-box-input {
+
+  }
+
+  .refresh {
+
+  }
+
+  #refresh-button {
+
+  }
+
+  .user{
+    
+  }
+
+

@@ -9,7 +9,7 @@ $(document).ready(function(){
 
   function domReady(tweet) {
 
-    let $user = $('<a href="#">@</a>').wrap('<span class="user"></span>').append(tweet.user);
+    let $user = $('<a class="user" href="#">@</a>').append(tweet.user);
     let $time = $('<span class="created-at"></span>').append(tweet.created_at);
     let $message = $('<p class="message"></p>').append(tweet.message);
 
@@ -32,24 +32,26 @@ $(document).ready(function(){
     return tweet;
   }
   
-  function addTweet(message) {
+  function addTweet() {
     let tweet = createTweet();
     streams.users.user.push(tweet);
     return tweet;
   }
-  //Users should be able to enter characters into a the user entry box, and upon clicking or pressing enter
-  //should be able to display tweet as the first item on the stream.
-    //this should append the tweet to their own stream
-
 
   $('#twittle-box-submit').on('click', function() {
     let tweet = addTweet();
     domReady(tweet).prependTo($twittlerStream);
-    //select the text entered in the twittle-box-input
-    //create a tweet with the users name, and time created
-    //append the tweet to the users stream
-    //
   });
+
+  /*
+  upon selecting a users name, the twittler stream should remove all the current 
+  tweets, look at the the users stream, and render to the page all the of tweets
+  the user has.
+  */
+
+  $('.user').on('click', function() {
+    
+  })
 
   // $('#refresh-button').on('click', function() {
   //   renderTwittlerStream();
