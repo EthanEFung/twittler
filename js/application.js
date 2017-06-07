@@ -1,8 +1,7 @@
 
 $('.twittler-stream').html('');
 
-let index = streams.home.length - 1;
-streams.users.user = [];
+streams.users.visitor = [];
 
 function domReady(tweet) {
 
@@ -14,15 +13,15 @@ function domReady(tweet) {
 }   
 
 function renderTwittlerStream() {
+  let index = streams.home.length - 1;
   for(index; index >= 0; index--) {
-    let tweet = streams.home[index];
-    domReady(tweet).appendTo('.twittler-stream');
+    domReady(streams.home[index]).appendTo('.twittler-stream');
   }
 }
 
 function resetTwittlerStream() {
-  $('.twittler-stream').remove();
-  $('.twittle-box').after('<article class="twittler-stream"></article>');
+  $('.twittler-stream').children().remove();
+  
 }
 
 function createTweet() {
@@ -35,9 +34,10 @@ function createTweet() {
   
 function addTweet() {
   let tweet = createTweet();
-  streams.users.user.push(tweet);
+  streams.users.visitor.push(tweet);
   return tweet;
 }
+
 
 
 $(document).ready(function(){
@@ -45,38 +45,43 @@ $(document).ready(function(){
   renderTwittlerStream();  
 
   $('#twittle-box-submit').on('click', function() {
+
     let tweet = addTweet();
     domReady(tweet).prependTo('.twittler-stream');
-  });
-
-  /*
-  upon selecting a users name, the twittler stream should remove all the current 
-  tweets, look at the the users stream, and render to the page all the of tweets
-  the user has.
-  */
-
-  $('.tweet').on('click', '#user-button', function() {
-    resetTwittlerStream()
-    
-    let tag = $(this).text().slice(1); 
-    index = streams.users[tag].length - 1;
-    
-    for(index; index >= 0; index--) {
-      let tweet = streams.users[tag][index];
-      console.log(tweet);
-      domReady(tweet).appendTo('.twittler-stream');
-    }
 
   });
+  
+
+  $('.twittler-stream').on('click','#user-button', function() {
+
+    console.log('I work!');
+
+    
+  
+  let tag = $(this).text().slice(1)    
+  let index = streams.users[tag].length - 1;
+  console.log('i work!', this, tag);  
+  resetTwittlerStream();
+    
+  for(index; index >= 0; index--) {
+    let tweet = streams.users[tag][index];
+    domReady(tweet).appendTo('.twittler-stream');
+  }
+
+});
+      
+      
 
   $('#refresh-button').on('click', function() {
-    resetTwittlerStream();
-    index = streams.home.length - 1;
-    return renderTwittlerStream();
-
     
-    //refresh button should remove all the tweets from the existing stream, and replace them with new
-    //tweets
-  });
+      console.log('I also work!');
+      resetTwittlerStream();
+      renderTwittlerStream();
+
+  })  
+
+
+
+
 
 });
