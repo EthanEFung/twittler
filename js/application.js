@@ -42,8 +42,6 @@ $(document).ready(function(){
 
   renderTwittlerStream(); 
 
-
-
   $('#twittle-box-submit').on('click', function() {
     let tweet = new Tweet();
     streams.users.visitor.push(tweet);
