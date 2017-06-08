@@ -1,11 +1,10 @@
 
 $('.twittler-stream').html('');
 
-streams.users.visitor = [];
 
 function domReady(tweet) {
 
-  let $user = $('<button class="user" id="user-button">@</button>').append(tweet.user);
+  let $user = $('<a class="user" id="user-button" href=# >@</a>').append(tweet.user);
   let $time = $('<span class="created-at"></span>').append(tweet.created_at);
   let $message = $('<p class="message"></p>').append(tweet.message);
 
@@ -20,33 +19,34 @@ function renderTwittlerStream() {
 }
 
 function resetTwittlerStream() {
+
   $('.twittler-stream').children().remove();
-  
+
 }
 
-function createTweet() {
+function Tweet() {
   let tweet = {};
   tweet.created_at = new Date;
   tweet.message = $('#twittle-box-input').val();
-  tweet.user = "visitor";
+  tweet.user = 'visitor';
   return tweet;
 }
   
-function addTweet() {
-  let tweet = createTweet();
-  streams.users.visitor.push(tweet);
-  return tweet;
-}
 
 
 
 $(document).ready(function(){
+  console.log(streams.home)
 
-  renderTwittlerStream();  
+  streams.users.visitor = [];
+
+  renderTwittlerStream(); 
+
+
 
   $('#twittle-box-submit').on('click', function() {
-
-    let tweet = addTweet();
+    let tweet = new Tweet();
+    streams.users.visitor.push(tweet);
     domReady(tweet).prependTo('.twittler-stream');
 
   });
@@ -71,7 +71,7 @@ $(document).ready(function(){
     resetTwittlerStream();
     renderTwittlerStream();
 
-  })  
-
+  }) 
+ 
 
 });
