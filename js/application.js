@@ -24,10 +24,7 @@ function restrictStreamLength(index, number) {
 
 function renderTwittlerStream(stream, index) {
 
-  index = restrictStreamLength(index, 10);
-  
   for(index; index >= 0; index--) {
-
     let tweet = stream[index];
     tweet.created_at = tweet.created_at.toLocaleString();
     domReady(tweet).appendTo('.twittler-stream');
@@ -40,20 +37,19 @@ function renderHomeStream() {
 
   let stream = streams.home;
   let index = stream.length - 1;
+  index = restrictStreamLength(index, 10);
 
   console.log('index after twittler-stream gens on home stream', index);
   renderTwittlerStream(stream, index);
 
 }
 
-function renderUserStream() {
-  console.log('whats this?', this)
-
-  let tag = $(this).text().slice(1);
+function renderUserStream(tag) {
+  
   let stream = streams.users[tag];
   let index = stream.length - 1;
+  index = restrictStreamLength(index, 10);
 
-  console.log('index after twittler-stream gens on user-button', index);
   renderTwittlerStream(stream, index);
 
 }
@@ -64,31 +60,29 @@ function resetTwittlerStream() {
 
 
 
-
-  
-
 $(document).ready(function(){
 
   streams.users.visitor = [];
 
-  renderTwittlerStream();
+  renderHomeStream();
   
   $('#twittle-box-submit').on('click', function() {
+
     let tweet = new Tweet;
     streams.users.visitor.push(tweet);
     domReady(tweet).prependTo('.twittler-stream');
     $("time.timeago").timeago();
+
   });
-  
 
   $('.twittler-stream').on('click','#user-button', function() {
 
-    resetTwittlerStream();
-    renderUserStream();
-   
+    let tag = $(this).text().slice(1);
 
-  });
-      
+    resetTwittlerStream();
+    renderUserStream(tag);
+   
+  });   
 
   $('#refresh-button').on('click', function() {
     
