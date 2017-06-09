@@ -15,7 +15,9 @@ function renderTwittlerStream() {
 
   let index = streams.home.length - 1;
   for(index; index >= 0; index--) {
-    domReady(streams.home[index]).appendTo('.twittler-stream');
+    let tweet = streams.home[index];
+    tweet.created_at = tweet.created_at.toLocaleString();
+    domReady(tweet).appendTo('.twittler-stream');
   }
   jQuery("time.timeago").timeago();
 }
@@ -31,7 +33,7 @@ function resetTwittlerStream() {
 
 function Tweet() {
   let tweet = {};
-  tweet.created_at = $.timeago(new Date);
+  tweet.created_at = $.timeago(new Date).toLocaleString();
   tweet.message = $('#twittle-box-input').val();
   tweet.user = 'visitor';
   return tweet;
