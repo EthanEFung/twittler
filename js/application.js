@@ -9,7 +9,7 @@ function Tweet() {
   return tweet;
 }
 
-function domReady(tweet) {
+function nodify(tweet) {
 
   let $user = $('<a class="user" id="user-button" href=# >@</a>').append(tweet.user);
   let $time = $('<time class="timeago" datetime="' + tweet.created_at + '"></time>').append(tweet.created_at);
@@ -18,46 +18,50 @@ function domReady(tweet) {
   return $('<div class="tweet"></div>').append($user, ' ', $time, $message);
 }   
 
-function restrictStreamLength(index, number) {
+function restrictStreamLength(stream, number) {
+  let index = stream.length - 1
   return (index > number) ? number : index;
 }
+
+function formatTimeStamps() {
+  $("time.timeago").timeago();
+}
+
 
 function renderTwittlerStream(stream, index) {
 
   for(index; index >= 0; index--) {
     let tweet = stream[index];
     tweet.created_at = tweet.created_at.toLocaleString();
-    domReady(tweet).appendTo('.twittler-stream');
+    nodify(tweet).appendTo('.twittler-stream');
     
   }
-  $("time.timeago").timeago();
+
+  formatTimeStamps();
+
 }
 
 function renderHomeStream() {
 
   let stream = streams.home;
-  let index = stream.length - 1;
-  index = restrictStreamLength(index, 10);
+  let index = restrictStreamLength(stream, 10);
 
-  console.log('index after twittler-stream gens on home stream', index);
   renderTwittlerStream(stream, index);
-
+  
 }
 
 function renderUserStream(tag) {
   
   let stream = streams.users[tag];
-  let index = stream.length - 1;
-  index = restrictStreamLength(index, 10);
+  let index = restrictStreamLength(stream, 10);
 
   renderTwittlerStream(stream, index);
-
+  
 }
 
 function resetTwittlerStream() {
   $('.twittler-stream').children().remove();
 }
-
 
 
 $(document).ready(function(){
@@ -69,16 +73,17 @@ $(document).ready(function(){
   $('#twittle-box-submit').on('click', function() {
 
     let tweet = new Tweet;
-    streams.users.visitor.push(tweet);
-    domReady(tweet).prependTo('.twittler-stream');
-    $("time.timeago").timeago();
+    const usersStream = streams.users.visitor
+
+    usersStream.push(tweet);
+    nodify(tweet).prependTo('.twittler-stream');
+    formatTimeStamps();
 
   });
 
   $('.twittler-stream').on('click','#user-button', function() {
 
     let tag = $(this).text().slice(1);
-
     resetTwittlerStream();
     renderUserStream(tag);
    
