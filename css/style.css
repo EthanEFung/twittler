@@ -1,6 +1,7 @@
   body {
     background-color: #f2f5f7;
-    font-family: tahoma, arial, helvetica, helvetica, sans-serif;
+
+    font-family: tahoma, arial, helvetica, sans-serif;
   }
 
   nav {
@@ -8,11 +9,11 @@
   }
 
   h1 {
-
+    color: grey;
     text-align: center;
 
     font-size: 20px;
-  	font-color: #66757f;
+
   }
 
   input {
@@ -23,7 +24,10 @@
   button {
     background-color: #f2f5f7;
     padding: 0.55em;
+
+    border-style: solid;
     border-radius: .25em;
+
     font-size: .85em
 
   }
@@ -36,9 +40,12 @@
 
   .twittle-box{
     background-color: #edf8ff;
-    border: 1px solid #aaa;
+
+    border: 1px solid #ccd6dd;
     border-radius: .5em .5em 0em 0em;
+
     padding: 1em;
+
   	text-align: center;
   }
 
@@ -48,9 +55,10 @@
 
   .tweet{
       background-color:#fff;
-      border-right: 1px solid #aaa;
-      border-left: 1px solid #aaa;
-      border-bottom: 1px solid #aaa;
+
+      border-right: 1px solid #ccd6dd;
+      border-left: 1px solid #ccd6dd;
+      border-bottom: 1px solid #ccd6dd;
 
       padding-top: 1.4em;
       padding-left: 1em;
@@ -59,6 +67,14 @@
   }
 
   #twittle-box-input {
+    padding:0.5em;
+  }
+
+  #twittle-box-submit {
+    background-color: #1da1f2
+  }
+
+  #twittle-box-user-icon {
 
   }
 
@@ -76,7 +92,7 @@
   }
 
   #user-button{
-    background-color: #fff
+  
     text-style: bold;
   }
 

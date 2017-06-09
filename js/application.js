@@ -12,6 +12,7 @@ function domReady(tweet) {
 }   
 
 function renderTwittlerStream() {
+
   let index = streams.home.length - 1;
   for(index; index >= 0; index--) {
     domReady(streams.home[index]).appendTo('.twittler-stream');
@@ -21,6 +22,9 @@ function renderTwittlerStream() {
 function resetTwittlerStream() {
 
   $('.twittler-stream').children().remove();
+  if (streams.home.length > 20) {
+    streams.home.length = 10;
+  }
 
 }
 
@@ -33,10 +37,7 @@ function Tweet() {
 }
   
 
-
-
 $(document).ready(function(){
-  console.log(streams.home)
 
   streams.users.visitor = [];
 
@@ -53,7 +54,10 @@ $(document).ready(function(){
   $('.twittler-stream').on('click','#user-button', function() {
 
     let tag = $(this).text().slice(1)    
-    let index = streams.users[tag].length - 1;
+
+    let index;
+    streams.users[tag].length > 10 ? index = 10 : index = streams.users[tag].length - 1;
+
     resetTwittlerStream();
     
     for(index; index >= 0; index--) {
@@ -66,7 +70,7 @@ $(document).ready(function(){
 
   $('#refresh-button').on('click', function() {
     
-    resetTwittlerStream();
+    resetTwittlerStream();    
     renderTwittlerStream();
 
   }) 
