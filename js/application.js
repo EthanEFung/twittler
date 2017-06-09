@@ -14,6 +14,7 @@ function domReady(tweet) {
 function renderTwittlerStream() {
 
   let index = streams.home.length - 1;
+  if(index > 20) { index = 10; }
   for(index; index >= 0; index--) {
     let tweet = streams.home[index];
     tweet.created_at = tweet.created_at.toLocaleString();
@@ -25,9 +26,6 @@ function renderTwittlerStream() {
 function resetTwittlerStream() {
 
   $('.twittler-stream').children().remove();
-  if (streams.home.length > 20) {
-    streams.home.length = 10;
-  }
 
 }
 
@@ -60,8 +58,8 @@ $(document).ready(function(){
 
     let tag = $(this).text().slice(1)    
 
-    let index;
-    streams.users[tag].length > 10 ? index = 10 : index = streams.users[tag].length - 1;
+    let index = streams.users[tag].length - 1
+    if (index > 10) { index = 10 }
 
     resetTwittlerStream();
     
