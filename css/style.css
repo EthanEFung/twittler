@@ -22,13 +22,15 @@
   }
 
   button {
-    background-color: #f2f5f7;
+    color: white;
+    background-color: #1da1f2;
     padding: 0.55em;
 
     border-style: solid;
     border-radius: .25em;
 
     font-size: .85em
+
 
   }
 
@@ -49,9 +51,6 @@
   	text-align: center;
   }
 
-  .twittler-stream {
-
-  }
 
   .tweet{
       background-color:#fff;
@@ -60,43 +59,28 @@
       border-left: 1px solid #ccd6dd;
       border-bottom: 1px solid #ccd6dd;
 
-      padding-top: 1.4em;
+      padding-top: 1.3em;
       padding-left: 1em;
 
       font-size: 14px
   }
 
   #twittle-box-input {
+    width: 70%;
     padding:0.5em;
   }
 
   #twittle-box-submit {
-    background-color: #1da1f2
+    width: 15%;
   }
 
-  #twittle-box-user-icon {
-
-  }
-
-  .refresh {
-
-  }
-
-  #refresh-button {
-
-
-  }
-
-  .user{
-    
-  }
 
   #user-button{
   
-    text-style: bold;
   }
 
   .bird {
+
     color: #1da1f2;
   }
 
