@@ -14,7 +14,7 @@ function domReady(tweet) {
 function renderTwittlerStream() {
 
   let index = streams.home.length - 1;
-  if(index > 20) { index = 10; }
+  if(index > 10) { index = 10; }
   for(index; index >= 0; index--) {
     let tweet = streams.home[index];
     tweet.created_at = tweet.created_at.toLocaleString();
@@ -65,6 +65,7 @@ $(document).ready(function(){
     
     for(index; index >= 0; index--) {
       let tweet = streams.users[tag][index];
+      tweet.created_at = tweet.created_at.toLocaleString();
       domReady(tweet).appendTo('.twittler-stream');
       $("time.timeago").timeago();
     }
